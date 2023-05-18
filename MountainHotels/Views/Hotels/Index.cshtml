@@ -1,8 +1,14 @@
 ﻿@model IEnumerable<Hotel>
 
-<h1>Hotels</h1>
+<h1>Summit Slope Retreats</h1>
 
+<h3>All Hotels</h3>
+
+<ul>
 @foreach (var hotel in Model)
 {
-    <p>Title: @hotel.Name, Genre: @hotel.Location</p>
+    <li>
+        <strong>Name:</strong> @hotel.Name, <strong>Location:</strong> @hotel.Location
+    </li>
 }
+</ul>
