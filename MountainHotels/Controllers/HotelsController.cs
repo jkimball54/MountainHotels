@@ -14,9 +14,17 @@ namespace MountainHotels.Controllers
         }
 
         // GET: /Hotels
-        public IActionResult Index()
+        public IActionResult Index(string? location)
         {
-            var hotels = _context.Hotels;
+            var hotels = _context.Hotels.AsEnumerable();
+            if(location != null)
+            {
+                hotels = hotels.Where(h => h.Location == location);
+                ViewData["Location"] = location;
+            }
+            
+            ViewData["allLocations"] = _context.Hotels.Select(h => h.Location).Distinct().ToList();
+
             return View(hotels);
         }
 

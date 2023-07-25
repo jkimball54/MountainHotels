@@ -1,6 +1,21 @@
 ﻿@model IEnumerable<Hotel>
-
+@{
+    List<string> allLocations = ViewData["allLocations"] as List<string>;
+}
 <h1>Summit Slope Retreats</h1>
+
+<h3>Location Filter</h3>
+@if (ViewData["Location"] != null)
+{
+    <p>Filtering by: <strong>@ViewData["Location"]</strong></p>
+}
+<ul>
+    <li><a href="/hotels">All</a></li>
+    @foreach(var location in allLocations)
+    {
+        <li><a href="/hotels?location=@location">@location</a></li>
+    }
+</ul>
 
 <h3>All Hotels</h3>
 
